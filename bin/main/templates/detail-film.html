@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:include="includes/header"></div>
+<body>
+<div class="uk-child-width-expand@s uk-text-center" uk-grid>
+<div class="uk-card uk-card-default uk-card-body">
+
+<h3 th:text="${film.title}" class="uk-card-title">CARD-TITLE</h3>
+
+<label>Genre :</label>
+<p th:text="${film.getGenre().title}"></p>
+<label>Annee :</label>
+<p th:text="${film.year}"></p>
+<label>Titre :</label>
+<p th:text="${film.title}"></p>
+<label>Realisateur :</label>
+<p th:text="${film.getRealisateur().getFullName()}"></p>
+<label>Duree :</label>
+<p th:text="${film.length}"></p>
+<label>Acteurs :</label>
+	<ul class="uk-list">
+		<li th:each="acteur : ${film.getActeurs()}">
+			<i><span th:text="${acteur.getFullName()}"></span></i>
+		</li>
+	</ul>
+<label>Synopsis :</label>
+<p th:text="${film.synopsis}"></p>
+
+</div>
+</div>
+
+<a th:href="@{/movieList}"><button  class="uk-button uk-button-primary">Retour</button></a>
+</body>
+
+<div th:include="includes/footer"></div>
+</html>

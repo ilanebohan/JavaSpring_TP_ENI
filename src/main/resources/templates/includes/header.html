@@ -1,0 +1,39 @@
+<head>
+<meta charset="UTF-8">
+<title>
+    TP - Filmothèque 
+</title>
+<link rel="stylesheet" href="/vendor/uikit/css/uikit.min.css"/>
+<script type="text/javascript" src="/vendor/uikit/js/uikit.min.js"></script>
+<script type="text/javascript" src="/vendor/uikit/js/uikit-icons.min.js"></script>
+
+
+<nav class="uk-navbar-container">
+    <div class="uk-container">
+        <div uk-navbar>
+
+            <div class="uk-navbar-left">
+
+                <ul class="uk-navbar-nav">
+                	<li><a th:href="@{/}">Accueil</a></li>
+                    <li><a th:href="@{/movieList}">Liste de films</a></li>
+                    <div class="uk-navbar-item">
+                    <div th:if="${ loggedUser != null}">
+						<p>Connected as <span th:text="${loggedUser}"></span></p>
+						<li><a th:href="@{/logout-session}">Logout</a></li>
+					</div>
+					<div th:if="${ loggedUser == null}">
+						<p>Not connected</p>
+						<li><a th:href="@{/formUser}">Login</a></li>
+					</div>
+                </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</nav>
+
+
+
+</head>

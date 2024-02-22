@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--  INCLUS LA PORTER HEADER -->
+<div th:include="includes/header"></div>
+
+<body>
+
+	<h1>Formulaire</h1>
+	
+	<form th:object="${leFilm}" action="/formFilm" method="post">
+		
+		<!--  Champs title -->
+		<div>
+			<label>Title</label>
+			<input type="text" th:field="*{title}"/>
+			<!--  Error title -->
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+		</div>
+		<div>
+			<label>Year</label>
+			<input type="number" th:field="*{year}"/>
+			<!--  Error title -->
+			<span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span>
+		</div>
+		<div>
+			<label>Duration</label>
+			<input type="number" th:field="*{length}"/>
+			<!--  Error title -->
+			<span th:if="${#fields.hasErrors('length')}" th:errors="*{length}"></span>
+		</div>
+		<div>
+			<label>Synopsis</label>
+			<textarea th:field="*{synopsis}"></textarea>
+			<!--  Error title -->
+			<span th:if="${#fields.hasErrors('synopsis')}" th:errors="*{synopsis}"></span>
+		</div>
+		<div>
+			<label>Genre</label>
+			<select th:field="*{genre}">
+				<option th:each="leGenre : ${lesGenres}" th:text="${leGenre.title}" th:value="${leGenre.id}"></option>
+			</select>
+		</div>
+		<div>
+			<label>Realisator</label>
+			<select th:field="*{real}">
+				<option th:each="leReal : ${lesParticipants}" th:text="${leReal.getFullName()}" th:value="${leReal.id}"></option>
+			</select>
+		</div>
+		<div>
+			<label>Actors</label>
+			<select th:field="*{actors}" multiple>
+				<option th:each="lActor : ${lesParticipants}" th:text="${lActor.getFullName()}" th:value="${lActor.id}"></option>
+			</select>
+		</div>
+		
+		
+		
+		<input type="submit" value="Enregistrer"/>
+	</form>
+
+</body>
+
+<div th:include="includes/footer"></div>
+</html>

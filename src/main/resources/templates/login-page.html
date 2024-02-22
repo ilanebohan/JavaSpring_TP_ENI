@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:include="includes/header"></div>
+
+<div th:if="${ loginError != null}">
+	<span th:text="${loginError}"></span>
+</div>
+
+<script>
+function myFunction() {
+	  var x = document.getElementById("passInput");
+	  if (x.type === "password") {
+	    x.type = "text";
+	  } else {
+	    x.type = "password";
+	  }
+	}
+</script>
+
+<body>
+
+<h1>Login Form</h1>
+	
+	<form th:object="${monUser}" action="/formUser" method="post">
+		<label>Email / Pseudo</label>
+		<input type="text" th:field="*{pseudo}"/>
+		<br/>
+		<label>Password</label>
+		<input type="password" id="passInput" th:field="*{password}"/>
+		<br/>
+		
+		<!-- An element to toggle between password visibility -->
+		<input type="checkbox" onclick="myFunction()">Show Password
+		<br/>
+		
+		<input type="submit" value="Enregistrer"/>
+	</form>
+</body>
+<div th:include="includes/footer"></div>
+</html>
