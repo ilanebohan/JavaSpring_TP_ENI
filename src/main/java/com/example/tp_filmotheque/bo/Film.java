@@ -3,6 +3,8 @@ package com.example.tp_filmotheque.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.Range;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -14,8 +16,10 @@ public class Film {
 	@NotBlank(message="Titre obligatoire")
 	String title;
 	
+	@Range(min=1, message="L'année doit être supérieure à 0")
 	Integer year;
 	
+	@Range(min=1, message="La durée doit être supérieure à 0")
 	Integer length;
 	
 	String synopsis;
