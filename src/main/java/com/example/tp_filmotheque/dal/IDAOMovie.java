@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.tp_filmotheque.bo.Avis;
 import com.example.tp_filmotheque.bo.Film;
 import com.example.tp_filmotheque.bo.Genre;
+import com.example.tp_filmotheque.bo.Membre;
 import com.example.tp_filmotheque.bo.Participant;
 
 
@@ -37,6 +38,8 @@ public interface IDAOMovie {
 	void publierAvis(Avis avis, long idFilm);
 
 	List<Avis> consulterAvis(long idFilm);
+
+	Membre getUserByLogin(String login);
 
 
 }

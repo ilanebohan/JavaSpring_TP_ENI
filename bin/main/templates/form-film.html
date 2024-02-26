@@ -10,6 +10,7 @@
 	
 	<form th:object="${leFilm}" action="/formFilm" method="post">
 		
+		<input type="hidden" th:field="*{id}"/>
 		<!--  Champs title -->
 		<div>
 			<label>Title</label>

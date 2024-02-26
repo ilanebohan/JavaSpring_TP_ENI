@@ -59,20 +59,5 @@ public class MovieManager {
 	}
 	
 	
-	// REPOSITORY CALLED METHODS EXAMPLE
-	public void createFilm(Film film)
-	{
-		Long idGenre = 1;
-		Genre genre = genreRepo.findById(idGenre).get();
-		film.setGenre(genre);
-		
-		filmRepo.save(film);
-		
-	}
 	
-	public void updateFilm(Film film) {
-		film.setTitle("Nouveau titre");
-		
-		filmRepo.save(film);
-	}
 }

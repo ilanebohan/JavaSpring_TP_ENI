@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Range;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -33,16 +36,16 @@ public class Film {
 	
 	String synopsis;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	Genre genre;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	Participant real;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	List<Participant> actors= new ArrayList<Participant>();
 	
-	@ManyToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	List<Avis> avis= new ArrayList<Avis>();
 	
 	

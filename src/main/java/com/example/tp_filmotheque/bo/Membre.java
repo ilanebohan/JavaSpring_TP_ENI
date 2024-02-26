@@ -1,7 +1,11 @@
 package com.example.tp_filmotheque.bo;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Membre extends Personne {
 
+	
 	String pseudo;
 	String password;
 	Boolean admin;

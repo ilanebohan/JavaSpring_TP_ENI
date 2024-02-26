@@ -170,4 +170,10 @@ public class DAOMovieMock implements IDAOMovie {
 		Film filmSelectionne = consulterFilmParId(idFilm);
 		return filmSelectionne.getAvis();
 	}
+
+	@Override
+	public Membre getUserByLogin(String login) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
