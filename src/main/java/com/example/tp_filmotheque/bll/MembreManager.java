@@ -29,8 +29,8 @@ public class MembreManager {
 		
 		if (connectingUser != null)
 		{
-			/*BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-			if (login.equalsIgnoreCase(login) && encoder.matches(password, connectingUser.getPassword())) {
+			//BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			/*if (login.equalsIgnoreCase(login) && encoder.matches(password, connectingUser.getPassword())) {
 				vretour = true;
 			}*/
 		}
