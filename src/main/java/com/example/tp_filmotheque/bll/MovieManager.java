@@ -9,12 +9,20 @@ import com.example.tp_filmotheque.bo.Film;
 import com.example.tp_filmotheque.bo.Genre;
 import com.example.tp_filmotheque.bo.Participant;
 import com.example.tp_filmotheque.dal.IDAOMovie;
+import com.example.tp_filmotheque.dal.jpa.FilmRepository;
+import com.example.tp_filmotheque.dal.jpa.GenreRepository;
 
 @Component
 public class MovieManager {
 
 	@Autowired
 	public IDAOMovie daoMovie;
+	
+	@Autowired
+	public FilmRepository filmRepo;
+	
+	@Autowired
+	public GenreRepository genreRepo;
 	
 	public List<Film> getAllMovies()
 	{
@@ -50,4 +58,21 @@ public class MovieManager {
 		return daoMovie.consulterParticipantParId(id);
 	}
 	
+	
+	// REPOSITORY CALLED METHODS EXAMPLE
+	public void createFilm(Film film)
+	{
+		Long idGenre = 1;
+		Genre genre = genreRepo.findById(idGenre).get();
+		film.setGenre(genre);
+		
+		filmRepo.save(film);
+		
+	}
+	
+	public void updateFilm(Film film) {
+		film.setTitle("Nouveau titre");
+		
+		filmRepo.save(film);
+	}
 }

@@ -5,11 +5,20 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Range;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+@Entity
 public class Film {
 
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	Long id;
 	
 	@Size(min=4,message="Le titre doit posséder 4 caractères min.")
@@ -24,12 +33,16 @@ public class Film {
 	
 	String synopsis;
 	
+	@ManyToOne
 	Genre genre;
 	
+	@ManyToOne
 	Participant real;
 	
+	@ManyToMany
 	List<Participant> actors= new ArrayList<Participant>();
 	
+	@ManyToMany
 	List<Avis> avis= new ArrayList<Avis>();
 	
 	
